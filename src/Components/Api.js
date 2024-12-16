@@ -22,4 +22,10 @@ const fetchArticlesByTopics = (selectedTopic) => {
       }
 }
 
-export { getTopics, fetchArticlesByTopics }
+const fetchArticleById = (article_id) => {
+    return api.get(`/articles/${article_id}`).then(({ data }) => {
+        return data.article
+    })
+}
+
+export { getTopics, fetchArticlesByTopics, fetchArticleById }
