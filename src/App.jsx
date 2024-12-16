@@ -8,6 +8,7 @@ import Footer from './Components/Footer'
 import Nav from './Components/Nav'
 import ArticleList from './Components/ArticleList'
 import { getTopics } from './Components/Api'
+import SingleArticle from './Components/SingleArticle'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     <Nav/>
     <Routes>
       <Route path='/' element={<ArticleList topics={topics}/>}/>
+      <Route path="/article/:article_id" element={<SingleArticle/>}/>
     </Routes>
     <Footer/>
     </>
