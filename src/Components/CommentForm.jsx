@@ -1,35 +1,33 @@
 import { useState } from "react"
 import { postComment } from "./Api"
+import { useContext } from "react"
+import { UserContext } from "../Contexts/UserContext"
 
 
-const CommentForm = ({ setComments, article_id, updateCommentCount }) => {
+const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
+
+    const { user } = useContext(UserContext)
 
     const [commentInput, setCommentInput] = useState('')
-    const [usernameInput, setUsernameInput] = useState('')
     const [submissionFeedback, setSubmissionFeedback] = useState('')
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
         setSubmissionFeedback('Posting comment...')
-        postComment(article_id, usernameInput, commentInput)
+        postComment(article_id, user.username, commentInput)
         .then((newComment) => {
             setCommentInput('')
-            setUsernameInput('')
             setSubmissionFeedback('Comment was sucessfully posted !')
             setComments((prevComments) => [newComment, ...prevComments])
-            updateCommentCount()
+            plusCommentCount()
         })
         .catch(() => {
             setCommentInput('')
-            setUsernameInput('')
             setSubmissionFeedback('Sorry, failed to post comment. Please try again.')
         })
     }
 
-   
-  const handleUsernameChange = (e) => {
-    setUsernameInput(e.target.value);
-  };
 
   const handleCommentChange = (e) => {
     setCommentInput(e.target.value);
@@ -39,16 +37,9 @@ const CommentForm = ({ setComments, article_id, updateCommentCount }) => {
     <>
         <h3>Add a Comment</h3>
         <form onSubmit={handleSubmit}>
-            <input
-              type='text' 
-              onChange={handleUsernameChange} 
-              placeholder="Type in username..." 
-              value={usernameInput} 
-              required>
-            </input>
             <textarea 
             onChange={handleCommentChange} 
-            placeholder="Add comment here..." 
+            placeholder={`user ${user.username} add comment here...`}
             value={commentInput} 
             required>
             </textarea>
