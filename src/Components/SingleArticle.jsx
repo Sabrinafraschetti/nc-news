@@ -46,7 +46,7 @@ const SingleArticle = () => {
         </div>
         {error && <p>Sorry, article not found !</p>}
       </section>
-      <Comments commentCount={articleById.comment_count}/>
+      <Comments commentCount={articleById.comment_count} article_id={articleById.article_id}/>
       </>
     )
 }
