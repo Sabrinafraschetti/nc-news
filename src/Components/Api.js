@@ -40,9 +40,14 @@ const patchVotes = (article_id, incVotes) => {
 }
 
 const postComment = (article_id, usernameInput, commentInput) => {
-  return api.post(`articles/${article_id}/comments`, { username: usernameInput, body: commentInput }).then(({ data }) => {
+  return api.post(`/articles/${article_id}/comments`, { username: usernameInput, body: commentInput }).then(({ data }) => {
   return data.comment
   })
 }
 
-export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes, postComment }
+const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`).then(() => {
+  })
+}
+
+export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes, postComment, deleteComment }

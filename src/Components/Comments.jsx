@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { getComments } from './Api'
+import DeleteComments from './DeleteComment'
 
 
-const Comments = ({comments, setComments, commentCount, article_id}) => {
+const Comments = ({comments, setComments, commentCount, article_id, minusCommentCount}) => {
 
     const [isHidden, setIsHidden] = useState(true)
     const [loading, setLoading] = useState(false)
@@ -34,7 +35,7 @@ const Comments = ({comments, setComments, commentCount, article_id}) => {
         <button onClick={toggleIsHidden}>{isHidden ? 'Show Comments' : 'Hide Comments'}</button>
         {isHidden ? null : <ul>
           {comments.map((comment) => (
-            <li key={comment.comment_id}><strong>{comment.author} -</strong> {comment.body}</li>
+            <li key={comment.comment_id}><strong>{comment.author} -</strong> {comment.body} <DeleteComments author={comment.author} comment_id={comment.comment_id} setComments={setComments} minusCommentCount={minusCommentCount}/></li>
           ))}
         </ul>}
         </>
