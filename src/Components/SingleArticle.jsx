@@ -2,6 +2,7 @@ import { useParams } from "react-router"
 import { fetchArticleById } from "./Api"
 import { useState, useEffect } from "react"
 import Comments from './Comments'
+import Votes from './Votes'
 
 const SingleArticle = () => {
 
@@ -17,7 +18,7 @@ const SingleArticle = () => {
           .then((fetchedArticle) => {
             setArticleById(fetchedArticle)
             setIsLoading(false)
-            if (shows.length === 0) {
+            if (fetchedArticle.length === 0) {
                 setError(true);
               }
           })
@@ -40,8 +41,8 @@ const SingleArticle = () => {
           <p>Topic: {articleById.topic}</p>
           <img className="image_single_article" src={articleById.article_img_url} alt='picture missing!' />
           <p>{articleById.body}</p>
-          <p>Votes: {articleById.votes}</p>
           <p>Written by {articleById.author}</p>
+          <Votes votes={articleById.votes} article_id={articleById.article_id}/>
           </ul>
         </div>
         {error && <p>Sorry, article not found !</p>}
