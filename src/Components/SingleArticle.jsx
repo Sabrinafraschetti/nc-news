@@ -3,12 +3,14 @@ import { fetchArticleById } from "./Api"
 import { useState, useEffect } from "react"
 import Comments from './Comments'
 import Votes from './Votes'
+import CommentForm from './CommentForm'
 
 const SingleArticle = () => {
 
     const { article_id } = useParams()
 
     const [articleById, setArticleById] = useState('')
+    const [comments, setComments] = useState([])
     const [isloading, setIsLoading] = useState(false);
     const [error, setError] = useState(false)
 
@@ -26,7 +28,12 @@ const SingleArticle = () => {
             setIsLoading(false);
             setError(true);
           });
-      }, [])
+      }, [article_id])
+
+     const updateCommentCount = () => 
+        setArticleById((prevArticle) => ({ 
+          ...prevArticle, comment_count: prevArticle.comment_count + 1 
+        }))
 
       if (isloading) {
         return <p>Loading...</p>
@@ -47,7 +54,8 @@ const SingleArticle = () => {
         </div>
         {error && <p>Sorry, article not found !</p>}
       </section>
-      <Comments commentCount={articleById.comment_count} article_id={articleById.article_id}/>
+      <Comments comments={comments} setComments={setComments} commentCount={articleById.comment_count} article_id={articleById.article_id}/>
+      <CommentForm setComments={setComments} article_id={articleById.article_id} updateCommentCount={updateCommentCount}/>
       </>
     )
 }

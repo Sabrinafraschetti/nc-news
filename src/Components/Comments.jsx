@@ -2,10 +2,9 @@ import { useState, useEffect } from "react"
 import { getComments } from './Api'
 
 
-const Comments = ({commentCount, article_id}) => {
+const Comments = ({comments, setComments, commentCount, article_id}) => {
 
     const [isHidden, setIsHidden] = useState(true)
-    const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(false)
 
      if (!article_id) {
@@ -19,7 +18,6 @@ const Comments = ({commentCount, article_id}) => {
       })
     }, [article_id])
 }
-
    
     const toggleIsHidden = () => {
 
