@@ -34,4 +34,10 @@ const getComments = (article_id) => {
 })
 }
 
-export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments }
+const patchVotes = (article_id, incVotes) => {
+  return api.patch(`/articles/${article_id}`, { inc_votes: incVotes} ).then(() => {
+    console.log('database updated')
+  })
+}
+
+export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes }
