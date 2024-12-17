@@ -36,8 +36,13 @@ const getComments = (article_id) => {
 
 const patchVotes = (article_id, incVotes) => {
   return api.patch(`/articles/${article_id}`, { inc_votes: incVotes} ).then(() => {
-    console.log('database updated')
   })
 }
 
-export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes }
+const postComment = (article_id, usernameInput, commentInput) => {
+  return api.post(`articles/${article_id}/comments`, { username: usernameInput, body: commentInput }).then(({ data }) => {
+  return data.comment
+  })
+}
+
+export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes, postComment }
