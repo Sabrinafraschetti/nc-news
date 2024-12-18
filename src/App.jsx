@@ -9,6 +9,8 @@ import Nav from './Components/Nav'
 import ArticleList from './Components/ArticleList'
 import { getTopics } from './Components/Api'
 import SingleArticle from './Components/SingleArticle'
+import Login from './Components/Login'
+import UserProfile from './Components/UserProfile'
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
     <Routes>
       <Route path='/' element={<ArticleList topics={topics}/>}/>
       <Route path="/article/:article_id" element={<SingleArticle/>}/>
+      <Route path="/users" element={<Login/>}/>
+      <Route path="/users/:username" element={<UserProfile/>}/>
     </Routes>
     <Footer/>
     </>

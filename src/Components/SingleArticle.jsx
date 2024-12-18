@@ -20,9 +20,9 @@ const SingleArticle = () => {
           .then((fetchedArticle) => {
             setArticleById(fetchedArticle)
             setIsLoading(false)
-            if (fetchedArticle.length === 0) {
-                setError(true);
-              }
+            if (Object.keys(fetchedArticle).length === 0) {
+              setError(true);
+          }
           })
           .catch((err) => {
             setIsLoading(false);

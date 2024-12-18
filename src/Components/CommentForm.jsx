@@ -24,7 +24,7 @@ const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
         })
         .catch(() => {
             setCommentInput('')
-            setSubmissionFeedback('Sorry, failed to post comment. Please try again.')
+            setSubmissionFeedback('Sorry, failed to post comment - please login.')
         })
     }
 
@@ -39,7 +39,7 @@ const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
         <form onSubmit={handleSubmit}>
             <textarea 
             onChange={handleCommentChange} 
-            placeholder={`user ${user.username} add comment here...`}
+            placeholder={`${user.username} add comment here...`}
             value={commentInput} 
             required>
             </textarea>

@@ -7,6 +7,7 @@ const DeleteComments = ({ author, comment_id, setComments, minusCommentCount }) 
     const { user } = useContext(UserContext)
 
     const [isDeleting, setIsDeleting] = useState(false)
+    const [error, setError] = useState(false)
 
     const handleDelete = () => {
         setIsDeleting(true)
@@ -18,7 +19,8 @@ const DeleteComments = ({ author, comment_id, setComments, minusCommentCount }) 
               )
         })
         .catch((err) => {
-            setIsDeleting(false);
+            setIsDeleting(false)
+            setError(true)
           })
 
     }
@@ -29,6 +31,7 @@ const DeleteComments = ({ author, comment_id, setComments, minusCommentCount }) 
             <button onClick={handleDelete}>
             {isDeleting ? "Deleting..." : "Delete"}
           </button>
+          {error && <p>{`Sorry, issue deleting comment !`}</p>}
           </>
         )
     }

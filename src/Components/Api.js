@@ -10,13 +10,14 @@ const getTopics = () => {
       });
 }
 
-const fetchArticlesByTopics = (selectedTopic) => {
+const fetchArticlesByTopics = (selectedTopic, order, sortBy) => {
     if (selectedTopic === "all") {
-        return api.get("/articles").then(({ data }) => { 
+        return api.get(`/articles?order=${order}&sort_by=${sortBy}`).then(({ data }) => { 
           return data.articles
         })
       } else {
-        return api.get(`/articles?topic=${selectedTopic}`).then(({ data }) => {
+        return api.get(`/articles?topic=${selectedTopic}&order=${order}&sort_by=${sortBy}`).then(({ data }) => {
+          console.log(data.articles)
           return data.articles
         })
       }
@@ -50,4 +51,10 @@ const deleteComment = (comment_id) => {
   })
 }
 
-export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes, postComment, deleteComment }
+const fetchUsers = () => {
+  return api.get(`/users`).then(({ data }) => {
+    return data.users
+  })
+}
+
+export { getTopics, fetchArticlesByTopics, fetchArticleById, getComments, patchVotes, postComment, deleteComment, fetchUsers }

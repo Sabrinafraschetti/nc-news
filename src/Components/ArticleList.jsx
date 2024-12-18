@@ -9,10 +9,12 @@ const ArticleList = ({topics}) => {
     const [selectedTopic, setSelectedTopic] = useState("all")
     const [isloading, setIsLoading] = useState(false);
     const [error, setError] = useState(false)
+    const [sortBy, setSortBy] = useState('created_at')
+    const [order, setOrder] = useState('desc')
 
     useEffect(() => {
         setIsLoading(true)
-        fetchArticlesByTopics(selectedTopic)
+        fetchArticlesByTopics(selectedTopic, order, sortBy)
           .then((fetchedArticles) => {
             setArticles(fetchedArticles)
             setIsLoading(false)
@@ -24,10 +26,18 @@ const ArticleList = ({topics}) => {
             setIsLoading(false);
             setError(true);
           });
-      }, [selectedTopic])
+      }, [selectedTopic, order, sortBy])
   
     function handleChange(event) {
       setSelectedTopic(event.target.value)
+    }
+
+    function handleSortByChange(e) {
+      setSortBy(e.target.value);
+    }
+    
+    function handleOrderToggle() {
+      setOrder(order === 'asc' ? 'desc' : 'asc');
     }
 
     if (isloading) {
@@ -52,12 +62,21 @@ const ArticleList = ({topics}) => {
             </option>
           ))}
         </select>
+        <label htmlFor="sort-by">Sort By:</label>
+        <select value={sortBy} onChange={handleSortByChange}>
+        <option value="created_at">Date</option>
+        <option value="votes">Votes</option>
+        <option value="comment_count">Comment Count</option>
+        </select>
+        <button onClick={handleOrderToggle}>
+        {order === 'desc' ? 'Ascending ⬆️' : 'Descending ⬇️'}
+      </button>
         <div className="article-list">
       {articles.map((article) => (
         <ArticleCard key={article.article_id} article={article} />
       ))}
        </div>
-       {error && <p>Sorry, no articles matching ${selectedTopic}!</p>}
+       {error && <p>{`Sorry, no articles matching ${selectedTopic}!`}</p>}
     </>
   
     )
