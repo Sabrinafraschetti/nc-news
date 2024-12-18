@@ -7,6 +7,7 @@ const Comments = ({comments, setComments, commentCount, article_id, minusComment
 
     const [isHidden, setIsHidden] = useState(true)
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
      if (!article_id) {
             return <p>Loading...</p>;
@@ -17,6 +18,10 @@ const Comments = ({comments, setComments, commentCount, article_id, minusComment
         setComments(comments)
         setLoading(false)
       })
+      .catch((err) => {
+        setLoading(false)
+        setError(true)
+    })
     }, [article_id])
 }
    
@@ -38,6 +43,7 @@ const Comments = ({comments, setComments, commentCount, article_id, minusComment
             <li key={comment.comment_id}><strong>{comment.author} -</strong> {comment.body} <DeleteComments author={comment.author} comment_id={comment.comment_id} setComments={setComments} minusCommentCount={minusCommentCount}/></li>
           ))}
         </ul>}
+        {error && <p>{`Sorry, could not find any comments !`}</p>}
         </>
     )
 }
