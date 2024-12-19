@@ -46,21 +46,23 @@ const SingleArticle = () => {
 
     return(
         <>
-        <section>
-        <div>
+        <section className='single-article-container'>
+        <div className="article-content">
           <ul>
-          <h2>{articleById.title}</h2>
-          <p>Topic: {articleById.topic}</p>
-          <img className="image_single_article" src={articleById.article_img_url} alt='picture missing!' />
-          <p>{articleById.body}</p>
-          <p>Written by {articleById.author}</p>
+          <h2 className="single-article-title">{articleById.title}</h2>
+          <p className="article-topic">Topic: {articleById.topic}</p>
+          <img className="article-image" src={articleById.article_img_url} alt='picture missing!' />
+          <p className="article-body">{articleById.body}</p>
+          <p className="article-author">Written by {articleById.author}</p>
           <Votes votes={articleById.votes} article_id={articleById.article_id}/>
           </ul>
         </div>
         {error && <p>Sorry, article not found !</p>}
       </section>
+      <div className="comment-section">
       <CommentForm setComments={setComments} article_id={articleById.article_id} plusCommentCount={plusCommentCount}/>
       <Comments comments={comments} setComments={setComments} commentCount={articleById.comment_count} article_id={articleById.article_id} minusCommentCount={minusCommentCount}/>
+      </div>
       </>
     )
 }

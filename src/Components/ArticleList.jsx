@@ -51,7 +51,6 @@ const ArticleList = ({topics}) => {
           </h2>
           <label htmlFor="topics-dropdown">Filter by Topic: </label>
           <select 
-          id='topics-dropdown'
           value={selectedTopic} 
           onChange={handleChange}
         >
@@ -69,7 +68,7 @@ const ArticleList = ({topics}) => {
         <option value="comment_count">Comment Count</option>
         </select>
         <button onClick={handleOrderToggle}>
-        {order === 'desc' ? 'Ascending ⬆️' : 'Descending ⬇️'}
+        {order === 'desc' ? 'Ascending' : 'Descending'}
       </button>
         <div className="article-list">
       {articles.map((article) => (

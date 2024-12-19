@@ -44,7 +44,7 @@ const Votes = ({ votes, article_id }) => {
   
     return (
       <>
-        <p>Votes: {updatedVotes}</p>
+        <p className='article-votes'>Votes: {updatedVotes}</p>
         <button onClick={() => handleClick(1)}>Up Vote</button>
         <button onClick={() => handleClick(-1)}>Down Vote</button>
       </>

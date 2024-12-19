@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getComments } from './Api'
 import DeleteComments from './DeleteComment'
+import '../App.css'
 
 
 const Comments = ({comments, setComments, commentCount, article_id, minusCommentCount}) => {
@@ -35,17 +36,35 @@ const Comments = ({comments, setComments, commentCount, article_id, minusComment
     }
 
     return (
-        <>
-        <h3>Comments: {commentCount}</h3>
-        <button onClick={toggleIsHidden}>{isHidden ? 'Show Comments' : 'Hide Comments'}</button>
-        {isHidden ? null : <ul>
+        <div className="comment-section">
+      <div className="comment-header">
+        <h3 className="single-article-title">{commentCount === 0 ? 'No comments yet' : `${commentCount} comments`}</h3>
+        <button onClick={toggleIsHidden}>
+          {isHidden ? 'Show Comments' : 'Hide Comments'}
+        </button>
+      </div>
+
+      {!isHidden && (
+        <ul>
           {comments.map((comment) => (
-            <li key={comment.comment_id}><strong>{comment.author} -</strong> {comment.body} <DeleteComments author={comment.author} comment_id={comment.comment_id} setComments={setComments} minusCommentCount={minusCommentCount}/></li>
+            <li key={comment.comment_id}>
+              <p className="comment-author">{comment.author}</p>
+              <p className="comment-body">{comment.body}</p>
+              <p className="comment-timestamp">{new Date(comment.created_at).toLocaleString()}</p>
+              <DeleteComments 
+                author={comment.author} 
+                comment_id={comment.comment_id} 
+                setComments={setComments} 
+                minusCommentCount={minusCommentCount} 
+              />
+            </li>
           ))}
-        </ul>}
-        {error && <p>{`Sorry, could not find any comments !`}</p>}
-        </>
+        </ul>
+      )}
+    </div>
     )
 }
 
 export default Comments
+
+
