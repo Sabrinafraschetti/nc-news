@@ -2,6 +2,7 @@ import { useState } from "react"
 import { postComment } from "./Api"
 import { useContext } from "react"
 import { UserContext } from "../Contexts/UserContext"
+import '../App.css'
 
 
 const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
@@ -34,19 +35,19 @@ const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
   };
 
     return (
-    <>
-        <h3>Add a Comment</h3>
-        <form onSubmit={handleSubmit}>
-            <textarea 
-            onChange={handleCommentChange} 
-            placeholder={`${user.username} add comment here...`}
-            value={commentInput} 
-            required>
-            </textarea>
-            <button type="submit">Submit</button>
-        </form>
-        {submissionFeedback && <p>{submissionFeedback}</p>}
-    </>
+        <div className="comment-form">
+            <h3 className="single-article-title">Leave a Comment</h3>
+      <form onSubmit={handleSubmit}>
+        <textarea 
+          placeholder={`${user.username} add comment here...`} 
+          value={commentInput} 
+          onChange={handleCommentChange} 
+          required 
+        />
+        <button type="submit">Post comment...</button>
+      </form>
+      {submissionFeedback && <p className="submission-feedback">{submissionFeedback}</p>}
+    </div>
     )
 }
 

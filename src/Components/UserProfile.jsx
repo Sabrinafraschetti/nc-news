@@ -1,6 +1,7 @@
 import { UserContext } from "../Contexts/UserContext"
 import { useContext, useState, useEffect } from "react"
 import { fetchUsers } from "./Api";
+import { Link } from "react-router";
 
 const UserProfile = () => {
 
@@ -8,7 +9,7 @@ const UserProfile = () => {
 
     const [usersArray, setUsersArray] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    
+
      
     useEffect(() => {
         fetchUsers()
@@ -33,10 +34,13 @@ const UserProfile = () => {
    } else {
     return (
         <>
-        <h2>User Profile</h2>
-        <p>{`welcome ${foundUser.username} !`}</p>
-        <img className="image_url" src={foundUser.avatar_url} alt='picture missing!' />
-        <p>{foundUser.name}</p>
+        <section className="user-profile-container">
+        <h2 className="user-profile-title">User Profile</h2>
+        <p className="welcome-message">{`welcome ${foundUser.username} !`}</p>
+        <p className="welcome-message">To view articles, navigate to <Link to="/" className="homepage-link">homepage...</Link></p>
+        <img  src={foundUser.avatar_url} alt='picture missing!' />
+        <p className="user-profile-name">{foundUser.name}</p>
+        </section>
         </>
     )
    }

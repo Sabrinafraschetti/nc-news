@@ -13,7 +13,7 @@ const Nav = () => {
             {!user.username ? (
         <Link to="/users"><p>Login</p></Link>
       ) : (
-        <Link to={`/users/${user.username}`}><p>User Profile</p></Link>
+        <Link to={`/users/${user.username}`}><p>{`Logged in as ${user.username}`}</p></Link>
       )}
         </nav>
     )

@@ -60,18 +60,24 @@ const Login = () => {
         <>
         <h2>Login to you account below...</h2>
         <form className="login" onSubmit={handleSubmit}>
-        <label>
-          username:
-          <input
-            type="text"
-            onChange={handleUserChange}
-            value={username}
-            required
-          ></input>
-        </label>
-        <label>
+        <label htmlFor='users-dropdown'>Select a user</label>
+        <select
+        id='users-dropdown'
+        value={username} 
+        onChange={handleUserChange} 
+        required
+        >
+            <option value='' disabled>Select user...</option> 
+            {users.map((user) => (
+                <option key={user.username} value={user.username}>
+                    {user.username}
+                    </option>
+                ))}
+            </select>
+            <label htmlFor='password'>
           password:
           <input
+            id='password'
             type="text"
             onChange={handlePasswordChange}
             value={password}
