@@ -21,7 +21,7 @@ const Nav = () => {
       ) : (
         <>
           <Link to={`/users/${user.username}`}>
-            <p>{`${user.username}`}</p>
+            <p>{`Welcome ${user.username} !`}</p>
           </Link>
           <p className="logout-link" onClick={handleLogout}>
             Logout
