@@ -3,6 +3,7 @@ import { postComment } from "./Api"
 import { useContext } from "react"
 import { UserContext } from "../Contexts/UserContext"
 import '../App.css'
+import { Link } from "react-router";
 
 
 const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
@@ -25,7 +26,11 @@ const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
         })
         .catch(() => {
             setCommentInput('')
-            setSubmissionFeedback('Sorry, failed to post comment - please login.')
+            setSubmissionFeedback(<>
+        Sorry, failed to post comment - please{" "}
+        <Link to="/users" className="homepage-link">login...</Link>.
+      </>
+    );
         })
     }
 
@@ -46,7 +51,7 @@ const CommentForm = ({ setComments, article_id, plusCommentCount }) => {
         />
         <button type="submit">Post comment...</button>
       </form>
-      {submissionFeedback && <p className="submission-feedback">{submissionFeedback}</p>}
+      {submissionFeedback ? <p className="submission-feedback">{submissionFeedback}</p> : null}
     </div>
     )
 }

@@ -44,9 +44,11 @@ const Votes = ({ votes, article_id }) => {
   
     return (
       <>
-        <p className='article-votes'>Votes: {updatedVotes}</p>
-        <button onClick={() => handleClick(1)}>Up Vote</button>
-        <button onClick={() => handleClick(-1)}>Down Vote</button>
+        <p className='article-votes'>{votes === 0 ? 'No votes yet' : `${votes} votes`}</p>
+        <button className={`article-vote ${voteDirection === 1 ? "button-active" : ""}`}
+        onClick={() => handleClick(1)}>Up Vote</button>
+        <button className={`article-vote ${voteDirection === -1 ? "button-active" : ""}`}
+        onClick={() => handleClick(-1)}>Down Vote</button>
       </>
     );
   };

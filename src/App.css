@@ -71,7 +71,7 @@ body{
 }
 
 .image-grid {
-  background-color: #fff;
+  background-color: #9face3;
   border-radius: 8px;
   overflow: hidden;
   width: 300px;
@@ -100,39 +100,27 @@ select, button {
   padding: 10px;
   margin: 10px 0 20px 10px;
   border-radius: 5px;
-  background-color: #fff;
-  color: #333; 
+  background-color: #9face3;
+  color:  #020d3f; 
   cursor: pointer;
 }
 
 
 button {
-  background-color: #020d3f; 
-  color: white;
+  background-color: #9face3; 
+  color: #020d3f;
   border: none;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color:  #000207;
+  background-color:  #ced9f8;
 }
-
-#password {
-  width: 30%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #f9f9f9; 
-  color: #020d3f;
-}
-
 
 .article-title {
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color:   #020d3f;
   margin: 15px;
 }
 
@@ -144,7 +132,7 @@ button:hover {
 
 .text {
   font-size: 14px;
-  color: #666;
+  color:  #020d3f;
 }
 
 .image_single_article {
@@ -178,7 +166,7 @@ button:hover {
 }
 
 .article-title:hover {
-  color: #5c66c5; 
+  color: #404dc0; 
 }
 
 .single-article-title{
@@ -220,6 +208,18 @@ button:hover {
   color: #020d3f;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.article-vote {
+  background-color: #9face3; 
+  color: #020d3f;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.button-active {
+  background-color: #d8d9db; 
+  color: #9face3;
 }
 
 
@@ -371,12 +371,13 @@ button:hover {
 }
 
 .homepage-link {
-  color: #4a50b1;
-  text-decoration: none;
+  color: #5c66c5;
+  text-decoration: underline;
 }
 
 .homepage-link:hover {
   text-decoration: underline;
+  color: #99a0ef;
 }
 
 .user-profile-name {
@@ -384,4 +385,15 @@ button:hover {
   color: #333;
 }
 
+.footer{
+  color: #9296be;
+}
 
+.logout-link {
+  color: #c9d5f7; /* Set the color for the logout text */
+  cursor: pointer;
+}
+
+.logout-link:hover {
+  color: #ebeffb; /* Hover color for logout link */
+}
