@@ -9,10 +9,9 @@ const ArticleCard = ({ article }) => {
           <ul>
           <Link to={`/article/${article.article_id}`}><strong className="article-title">{article.title}</strong></Link>
             <img className="image_url" src={article.article_img_url} alt='picture missing!' />
-            <p className='text'>Topic: {article.topic}</p>
-            <p className='text'>Votes: {article.votes}</p>
-            <p className='text'>Comments: {article.comment_count}</p>
-            <p className="text">Author: {article.author}</p>
+            <p className='text'>{article.topic}</p>
+            <p className='text'>{article.votes} Votes</p>
+            <p className='text'>{article.comment_count} Comments</p>
           </ul>
         </div>
       </section>
