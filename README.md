@@ -1,6 +1,7 @@
 # Northcoders News UI
 
 LINK TO DEPLOYED VERSION:
+https://676574fc62c0557ce3c6ce4f--sabrina-nc-news.netlify.app/
 
 
 LINK TO BACKEND REPO:
