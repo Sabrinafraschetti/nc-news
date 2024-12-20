@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return(
-        <footer>
+        <footer className="footer">
             <p>© 2024 NC News App. All rights reserved.</p>
         </footer>
     )

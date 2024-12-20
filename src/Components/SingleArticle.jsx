@@ -57,7 +57,7 @@ const SingleArticle = () => {
           <Votes votes={articleById.votes} article_id={articleById.article_id}/>
           </ul>
         </div>
-        {error && <p>Sorry, article not found !</p>}
+        {error ? <p>Sorry, article not found!</p> : null}
       </section>
       <div className="comment-section">
       <CommentForm setComments={setComments} article_id={articleById.article_id} plusCommentCount={plusCommentCount}/>

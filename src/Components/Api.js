@@ -17,7 +17,6 @@ const fetchArticlesByTopics = (selectedTopic, order, sortBy) => {
         })
       } else {
         return api.get(`/articles?topic=${selectedTopic}&order=${order}&sort_by=${sortBy}`).then(({ data }) => {
-          console.log(data.articles)
           return data.articles
         })
       }

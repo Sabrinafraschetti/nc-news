@@ -31,7 +31,7 @@ const DeleteComments = ({ author, comment_id, setComments, minusCommentCount }) 
             <button onClick={handleDelete}>
             {isDeleting ? "Deleting..." : "Delete"}
           </button>
-          {error && <p>{`Sorry, issue deleting comment !`}</p>}
+          {error ? <p>{`Sorry, issue deleting comment!`}</p> : null}
           </>
         )
     }
